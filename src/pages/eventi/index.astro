@@ -17,9 +17,55 @@ const description =
 
 const canonical =
   "https://lacasonagroup.it/eventi/";
+
+const ogImage = "https://lacasonagroup.it/assets/og/eventi.jpg";
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://lacasonagroup.it/eventi/",
+    url: "https://lacasonagroup.it/eventi/",
+    name: "Eventi & Catering | La Casona Group",
+    description:
+      "Catering e banqueting per eventi privati, matrimoni e aziende a Bologna.",
+    inLanguage: "it-IT",
+    isPartOf: {
+      "@id": "https://lacasonagroup.it/#website"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Catering e banqueting per eventi",
+    provider: {
+      "@type": "Organization",
+      name: "La Casona Group",
+      url: "https://lacasonagroup.it/"
+    },
+    areaServed: {
+      "@type": "AdministrativeArea",
+      name: "Emilia-Romagna"
+    },
+    serviceType: [
+      "Catering per matrimoni",
+      "Eventi aziendali",
+      "Eventi privati",
+      "Banqueting"
+    ],
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceLocation: {
+        "@type": "Place",
+        name: "Bologna"
+      }
+    }
+  }
+];
 ---
 
-<BaseLayout title={title} description={description} canonical={canonical}>
+<BaseLayout title={title} description={description} canonical={canonical} ogImage={ogImage}
+  ogType="website" schema={schema}>
     <CateringLayout>
         <div class="overflow-x-hidden bg-white flex flex-col ">
             <Hero/>

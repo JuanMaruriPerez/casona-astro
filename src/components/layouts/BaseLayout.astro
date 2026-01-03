@@ -5,7 +5,26 @@ const {
   title = "La Casona Group | Catering, Banqueting & Ristorante a Bologna",
   description = "La Casona Group è catering e banqueting per eventi, matrimoni e aziende a Bologna. Trasformiamo ogni occasione in un’esperienza unica, curata in ogni dettaglio.",
   canonical = "https://lacasonagroup.it/",
+  ogImage = "https://lacasonagroup.it/assets/og/la-casona-og.jpg",
+  ogType = "website",
+  preloadImages = [],
+  schema = null,
 } = Astro.props;
+
+const defaultSchema = {
+  "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "La Casona Group",
+        "url": "https://lacasonagroup.it/",
+        "logo": "https://lacasonagroup.it/assets/svg/CasonaGroupLogo.svg",
+        "sameAs": [
+          "https://www.instagram.com/lacasonaeventi/",
+          "https://www.instagram.com/lacasona_tuttifritti/",
+          "https://www.facebook.com/LaCasonaTuttiFritti/",
+          "https://www.facebook.com/LaCasonaEventi/"
+        ],
+        "description": "La Casona Group è catering e banqueting per eventi, matrimoni e aziende a Bologna. Trasformiamo ogni occasione in un’esperienza unica, curata in ogni dettaglio."
+};
 ---
 
 <!doctype html>
@@ -23,14 +42,16 @@ const {
     <link rel="canonical" href={canonical} />
 
     <!-- Open Graph -->
+    <meta property="og:site_name" content="La Casona Group" />
     <meta property="og:locale" content="it_IT" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content="/assets/svg/CasonaGroupLogo.svg" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image:height" content="800" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -39,9 +60,9 @@ const {
     <link rel="icon" href="/assets/svg/fav-icon.svg" type="image/svg+xml" />
 
     <!-- Preload imágenes hero -->
-    <link rel="preload" as="image" href="/assets/fotos/portada_catering.webp" />
-    <link rel="preload" as="image" href="/assets/fotos/portada_ristorante.webp" />
-
+    {preloadImages.map((imgPre) => (
+      <link rel="preload" as="image" href={imgPre} />
+    ))}
     <!-- Preload vídeos hero -->
     <link
       rel="preload"
@@ -60,20 +81,7 @@ const {
 
     <!-- Schema.org -->
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "La Casona Group",
-        "url": "https://lacasonagroup.it/",
-        "logo": "https://lacasonagroup.it/assets/svg/CasonaGroupLogo.svg",
-        "sameAs": [
-          "https://www.instagram.com/lacasonaeventi/",
-          "https://www.instagram.com/lacasona_tuttifritti/",
-          "https://www.facebook.com/LaCasonaTuttiFritti/",
-          "https://www.facebook.com/LaCasonaEventi/"
-        ],
-        "description": "La Casona Group è catering e banqueting per eventi, matrimoni e aziende a Bologna. Trasformiamo ogni occasione in un’esperienza unica, curata in ogni dettaglio."
-      }
+      {JSON.stringify(schema ?? defaultSchema)}
     </script>
 
     <!-- Microsoft Clarity (solo si acepta cookies) -->

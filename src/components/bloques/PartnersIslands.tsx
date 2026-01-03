@@ -2,7 +2,8 @@ import { useMemo, useState } from "react";
 import { X, MapPin, Mail, Phone, Globe, User, Share2 } from "lucide-react";
 import { HiLink } from "react-icons/hi";
 import ReactMarkdown from "react-markdown";
-import ContactForm from "@/components/bloques/ContactForm";
+import { useEffect } from "react";
+
 
 type Partner = {
   titolo: string;
@@ -35,6 +36,33 @@ export default function PartnersIsland() {
     "Location",
     "Luci e Impianti Audio",
   ];
+
+  const categoriaMap: Record<string, string> = {
+    tutto: "Tutto",
+    "agenzia-comunicazione": "Agenzia Communicazione",
+    "grafica-artigianale": "Grafica Artigianale",
+    "agenzia-viaggi": "Agenzia Viaggi",
+    "cake-design": "Cake Design",
+    "flower-design": "Flower Design",
+    "foto-video": "Foto e Video",
+    intrattenimento: "Intrattenimento",
+    location: "Location",
+    "luci-audio": "Luci e Impianti Audio",
+  };
+
+  const slugMap = Object.fromEntries(
+    Object.entries(categoriaMap).map(([k, v]) => [v, k])
+  );
+
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const catFromUrl = params.get("category");
+
+    if (catFromUrl && categoriaMap[catFromUrl]) {
+      setCategoria(categoriaMap[catFromUrl]);
+    }
+  }, []);
 
    const partners = [
     { titolo: "Villa Contessa Massari",alt:"Facciata storica di Villa Contessa Massari, location per matrimoni ed eventi eleganti", img: "/assets/fotos/Eventi/villa-contessa-massari.webp", categoria: "Location", text:"Villa Contessa Massari è una location esclusiva per matrimoni ed eventi, ideale per chi cerca un’atmosfera elegante e romantica immersa nella storia e nella natura. \n\nQuesta affascinante villa settecentesca, circondata da un parco privato di 26.000 mq, offre una cornice unica per matrimoni all’aperto, cene di gala, ricevimenti e cerimonie civili. Le sale interne, curate nei minimi dettagli per conservare il fascino originario, sono perfette per eventi culturali, mostre e ricevimenti in un ambiente esclusivo e raffinato. \n\nVilla Contessa Massari è anche sede ufficiale per matrimoni civili, grazie alla recente apertura delle scuderie come casa comunale.", web:"https://www.villacontessamassari.it/", rrss:"https://www.instagram.com/Villacontessamassari/?hl=it", mail:"info@villacontessamassari.it", tel:"+39 3683357613", location:"Via Massarenti, 1/A | Gualdo (FE)", contact:"Manuele Ferrari" },
@@ -81,7 +109,20 @@ export default function PartnersIsland() {
                 {categorie.map((cat) => (
                   <button
                     key={cat}
-                    onClick={() => setCategoria(cat)}
+                    onClick={() => {
+                        setCategoria(cat);
+
+                        const slug = slugMap[cat];
+                        const url = new URL(window.location.href);
+
+                        if (slug === "tutto") {
+                          url.searchParams.delete("category");
+                        } else {
+                          url.searchParams.set("category", slug);
+                        }
+
+                        window.history.replaceState({}, "", url);
+                      }}
                     className={`px-3 py-1 text-sm rounded-sm border border-amarilloPastel font-normal
                       ${categoria === cat ? "bg-amarilloPastel text-burdeaux" : "bg-white text-burdeaux border-amarillo"}
                       hover:bg-amarilloPastel hover:text-burdeaux transition-all`}
@@ -126,9 +167,9 @@ export default function PartnersIsland() {
                   {/* Gradiente inferior + texto */}
                   <div className="absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-transparent pointer-events-none"></div>
                   <div className="absolute bottom-4 left-0 right-0 flex flex-col items-center justify-center pointer-events-none">
-                    <h3 className="text-burdeaux text-2xl lg:text-lg font-normal drop-shadow-lg text-center">
+                    <h2 className="text-burdeaux text-2xl lg:text-lg font-normal drop-shadow-lg text-center">
                       {p.titolo}
-                    </h3>
+                    </h2>
                     <p className="text-amarillo text-green-900 text-sm font-medium">{p.categoria}</p>
                   </div>
                 </div>

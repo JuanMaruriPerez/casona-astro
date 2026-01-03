@@ -12,3 +12,10 @@ import MainFooter from "./MainFooter.astro";
 
   <MainFooter />
 </div>
+<script is:inline>
+  if (window.location.pathname === "/" && window.location.search.includes("from=contatti")) {
+    window.location.hash = "#trovaci-su";
+  } else if (window.location.pathname === "/" && window.location.search.includes("from=intervista")) {
+    window.location.hash = "#intervista";
+  }
+</script>

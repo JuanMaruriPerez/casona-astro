@@ -4,13 +4,71 @@ import MenuLayout from "@/components/layouts/MenuLayout.astro";
 
 
 const title =
-  "Menù Ristorante | La Casona Group – Cucina Emiliana";
+  "Menù Ristorante La Casona Tutti Fritti | Cucina Emiliana a Bologna";
 
 const description =
-  "Consulta il menù del ristorante La Casona Group: piatti della tradizione emiliana, proposte stagionali e ingredienti di qualità.";
+  "Scopri il menù del ristorante La Casona Tutti Fritti a Bologna: crescentine, tigelle e piatti della tradizione emiliana, preparati con ingredienti selezionati di qualità.";
 
 const canonical =
   "https://lacasonagroup.it/ristorante/menu/";
+
+const ogImage = "https://lacasonagroup.it/assets/og/menu-og.jpg";
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://lacasonagroup.it/ristorante/menu/",
+    "url": "https://lacasonagroup.it/ristorante/menu/",
+    "name": "Menù Ristorante La Casona Tutti Fritti",
+    "description": "Menù del ristorante La Casona Tutti Fritti con piatti della tradizione emiliana, crescentine, tigelle e cucina tipica bolognese.",
+    "inLanguage": "it-IT",
+    "isPartOf": {
+      "@id": "https://lacasonagroup.it/ristorante/#restaurant"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    "@id": "https://lacasonagroup.it/ristorante/menu/#menu",
+    "name": "Menù La Casona Tutti Fritti",
+    "inLanguage": "it-IT",
+    "hasMenuSection": [
+      {
+        "@type": "MenuSection",
+        "name": "Primi piatti della Zdaura"
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Crescentine e Tigelle"
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Carne alla griglia"
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Vini"
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Dolci"
+      }
+    ],
+    "provider": {
+      "@type": "Restaurant",
+      "@id": "https://lacasonagroup.it/ristorante/#restaurant",
+      "name": "La Casona Tutti Fritti",
+      "servesCuisine": "Cucina emiliana",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bologna",
+        "addressCountry": "IT"
+      }
+    }
+  }
+]
+
 
 const images = [
   "/assets/fotos/menu/01.webp",
@@ -18,23 +76,118 @@ const images = [
   "/assets/fotos/menu/03.webp",
   "/assets/fotos/menu/04.webp",
 ];
+
+const images_en = [
+  "/assets/fotos/menu/01-en.webp",
+  "/assets/fotos/menu/02-en.webp",
+  "/assets/fotos/menu/03-en.webp",
+  "/assets/fotos/menu/04-en.webp",
+];
 ---
-<BaseLayout title={title} description={description} canonical={canonical}>
-    <MenuLayout>
-      <section class="w-full min-h-screen flex flex-col items-center py-16 bg-pastel">
-        <div class="max-w-6xl p-4 grid grid-cols-1 md:grid-cols-2 gap-8">
-          {images.map((src, i) => (
-            <img
-              src={src}
-              alt={`Pagina del menu ${i + 1}`}
-              class="w-full h-auto shadow-md rounded-lg
-                    transition-transform duration-300
-                    hover:scale-[1.02]"
-              loading="lazy"
-              decoding="async"
-            />
-          ))}
-        </div>
-      </section>
-    </MenuLayout>
+<BaseLayout title={title} description={description} canonical={canonical}  ogImage={ogImage}
+  ogType="website" schema={schema}>
+  <MenuLayout>
+    <section class="relative w-full min-h-screen flex flex-col items-center py-16 bg-pastel">
+
+      <!-- SEO semantic -->
+      <h1 class="text-center sm:text-left
+             text-xl md:text-2xl font-semibold  items-center justify-center
+              leading-snug text-burdeaux px-6 md:px-16 lg:px-24">
+        Menù La Casona Tutti Fritti
+      </h1>
+
+      <!-- Separador -->
+      <div class="h-[4px] w-32 my-8 bg-amarillo mx-auto sm:mx-0"></div>
+
+      <p class="sr-only px-6 md:px-16 lg:px-24 text-lg text-burdeaux mb-10">
+      Il menù del ristorante La Casona Tutti Fritti a Bologna propone piatti della
+      tradizione emiliana preparati secondo ricette autentiche. 
+      <span class="mt-1 block">L’offerta comprende crescentine e tigelle servite con salumi e formaggi locali, primi piatti tipici
+      bolognesi come tortellini, tagliatelle, lasagne e passatelli fatti a mano, oltre
+      a secondi di carne alla griglia, verdure di stagione, fritti pastellati e una
+      selezione di vini dei colli emiliani.</span>
+      </p>
+
+      <!-- 🌍 Language selector -->
+      <div class="absolute top-6 right-6 flex gap-2 z-20">
+        <button
+          id="btn-it"
+          aria-label="Italiano"
+          class="text-2xl opacity-100 transition hover:scale-110"
+        >
+          🇮🇹
+        </button>
+        <button
+          id="btn-en"
+          aria-label="English"
+          class="text-2xl opacity-50 transition hover:scale-110"
+        >
+          🇬🇧
+        </button>
+      </div>
+
+      <!-- 🇮🇹 MENU IT -->
+      <div
+        id="menu-it"
+        class="max-w-6xl p-4 grid grid-cols-1 md:grid-cols-2 gap-8"
+      >
+        {images.map((src, i) => (
+          <img
+            src={src}
+            alt={`Pagina del menù ${i + 1}`}
+            class="w-full h-auto shadow-md rounded-lg hover:scale-[1.02] transition"
+            loading="lazy"
+            decoding="async"
+          />
+        ))}
+      </div>
+
+      <!-- 🇬🇧 MENU EN -->
+      <div
+        id="menu-en"
+        class="hidden max-w-6xl p-4 grid grid-cols-1 md:grid-cols-2 gap-8"
+      >
+        {images_en.map((src, i) => (
+          <img
+            src={src}
+            alt={`Menu page ${i + 1}`}
+            class="w-full h-auto shadow-md rounded-lg hover:scale-[1.02] transition"
+            loading="lazy"
+            decoding="async"
+          />
+        ))}
+      </div>
+
+      <!-- 🧠 Logic -->
+      <script is:inline>
+        const btnIt = document.getElementById("btn-it");
+        const btnEn = document.getElementById("btn-en");
+        const menuIt = document.getElementById("menu-it");
+        const menuEn = document.getElementById("menu-en");
+
+        function setLang(lang) {
+          if (lang === "en") {
+            menuIt.classList.add("hidden");
+            menuEn.classList.remove("hidden");
+            btnIt.classList.add("opacity-50");
+            btnEn.classList.remove("opacity-50");
+          } else {
+            menuEn.classList.add("hidden");
+            menuIt.classList.remove("hidden");
+            btnEn.classList.add("opacity-50");
+            btnIt.classList.remove("opacity-50");
+          }
+          localStorage.setItem("menu-lang", lang);
+        }
+
+        // default
+        const saved = localStorage.getItem("menu-lang") || "it";
+        setLang(saved);
+
+        btnIt.addEventListener("click", () => setLang("it"));
+        btnEn.addEventListener("click", () => setLang("en"));
+      </script>
+
+    </section>
+  </MenuLayout>
 </BaseLayout>

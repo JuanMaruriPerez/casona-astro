@@ -23,7 +23,11 @@ import Carrusel from "@/components/bloques/Carrusel";
 
 ---
 
-<BaseLayout title={title} description={description} canonical={canonical}>
+<BaseLayout title={title} description={description} canonical={canonical}
+  preloadImages={[
+      "/assets/fotos/portada_catering.webp",
+      "/assets/fotos/portada_ristorante.webp",
+    ]}>
   <MainLayout>
     <div class="overflow-x-hidden bg-white flex flex-col space-y-[15vh] sm:space-y-[10vh] md:space-y-[8vh]">
       <Hero />

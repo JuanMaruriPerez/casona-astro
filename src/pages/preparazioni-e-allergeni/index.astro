@@ -1,0 +1,56 @@
+---
+import BaseLayout from "@/components/layouts/BaseLayout.astro";
+import ReturnLayout from "@/components/layouts/ReturnLayout.astro";
+
+const title =
+  "Preparazioni e Allergeni | La Casona Group – Informazioni Alimentari";
+
+const description =
+  "Consulta e scarica il documento ufficiale con l’elenco delle preparazioni e degli allergeni del ristorante La Casona Group, aggiornato secondo la normativa vigente.";
+
+const canonical =
+  "https://lacasonagroup.it/preparazioni-e-allergeni/";
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <ReturnLayout>
+    <section class="max-w-5xl mx-auto px-6 py-12 text-gray-800 leading-relaxed">
+
+      <h1 class="text-3xl md:text-4xl font-semibold mb-8 text-center">
+        Preparazioni e Allergeni
+      </h1>
+
+      <p class="mb-4">
+        In questa sezione è possibile consultare e scaricare il documento ufficiale
+        contenente l’elenco delle <strong>preparazioni alimentari</strong> e degli
+        <strong>allergeni</strong> presenti nei piatti del ristorante
+        <strong>La Casona Group</strong>.
+      </p>
+
+      <p class="mb-4">
+        Il documento fornisce informazioni dettagliate sugli ingredienti utilizzati
+        ed è redatto nel rispetto della normativa vigente in materia di sicurezza
+        alimentare e tutela del consumatore.
+      </p>
+
+      <p class="mb-4">
+        Cliccando sul pulsante di download qui sotto, verrà scaricato un file PDF
+        contenente tutte le informazioni aggiornate relative alle preparazioni e agli
+        allergeni.
+      </p>
+
+      <div class="flex justify-center mb-4">
+        <a
+            href="/assets/pdfs/preparazioni-e-allergeni2025dic.pdf"
+            download
+            class="text-center border border-burdeaux 
+                bg-burdeaux px-5 py-2 text-xs sm:text-base md:text-lg lg:text-xl font-light text-white hover:scale-105 transition-transform duration-200"
+            aria-label="Scarica PDF Preparazioni e Allergeni"
+        >
+            Scarica
+        </a>
+    </div>
+
+    </section>
+  </ReturnLayout>
+</BaseLayout>

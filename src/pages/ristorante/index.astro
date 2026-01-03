@@ -11,6 +11,24 @@ const description =
 const canonical =
   "https://lacasonagroup.it/ristorante/";
 
+const ogImage = "https://lacasonagroup.it/assets/og/ristorante-og.jpg";
+
+const ogType="website";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  name: "La Casona Tutti Fritti",
+  url: "https://lacasonagroup.it/ristorante/",
+  servesCuisine: "Cucina emiliana",
+  priceRange: "€€",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Bologna",
+    addressCountry: "IT"
+  }
+};
+
 import Hero from "./_Hero.astro";
 import CTA from "./_CTA.astro";
 import FoodMaking from "./_FoodMaking.astro";
@@ -20,7 +38,8 @@ import Proveedores from "./_Proveedores.astro";
 import Testimonios from "@/components/bloques/Testimonios";
 ---
 
-<BaseLayout title={title} description={description} canonical={canonical}>
+<BaseLayout title={title} description={description} canonical={canonical} ogImage={ogImage}
+  ogType={ogType} schema={schema}>
     <RistoranteLayout>
         <div class="overflow-x-hidden bg-pastel">
             <Hero />

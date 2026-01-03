@@ -1,0 +1,87 @@
+# =====================================================
+# 🔁 REDIRECCIONES SEO (PRIORIDAD MÁXIMA)
+# =====================================================
+
+RewriteEngine On
+
+# --- MAIN
+Redirect 301 /contatti/ /?from=contatti
+Redirect 301 /intervista/ /?from=intervista
+
+# --- RISTORANTE
+Redirect 301 /home/la-casona-tutti-fritti/ /ristorante/
+Redirect 301 /menu-casona/ /ristorante/menu/
+
+# --- EVENTI (contenidos duplicados / escuetos)
+Redirect 301 /home/wedding-eventi-privati/ /eventi/
+Redirect 301 /home/eventi-aziendali/ /eventi/
+Redirect 301 /eventi-aziendali/ /eventi/
+
+# --- LOCATION → filtro dinamico (usa RewriteRule)
+RewriteRule ^location/?$ /eventi/partners?category=location [R=301,L,QSA]
+
+# --- GONE Candidatos
+#Redirect gone /mise-en-place/ 
+
+# ---------------------------------------
+# 🔒 SECURITY HEADERS (Lighthouse Best Practices)
+# ---------------------------------------
+<IfModule mod_headers.c>
+    # Evita que tu web se pueda incrustar en iframes (clickjacking)
+    Header always set X-Frame-Options "DENY"
+
+    # Previene ataques de sniffing MIME
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Protección básica contra XSS
+    Header always set X-XSS-Protection "1; mode=block"
+
+    # Política de referer más segura
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Restringe APIs sensibles del navegador
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), fullscreen=()"
+
+    # 🛑 HSTS (solo si ya tienes HTTPS totalmente forzado)
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+</IfModule>
+
+# ---------------------------------------
+# 🛡️ CONTENT SECURITY POLICY (light/mild)
+# ---------------------------------------
+<IfModule mod_headers.c>
+    Header set Content-Security-Policy "
+        default-src 'self';
+        img-src 'self' data: https:;
+        script-src 'self' https:;
+        style-src 'self' 'unsafe-inline' https:;
+        font-src 'self' https: data:;
+        connect-src 'self';
+        object-src 'none';
+        base-uri 'self';
+        frame-ancestors 'none';
+    "
+</IfModule>
+
+# ---------------------------------------
+# 🔁 SPA ROUTING (React, Vite, Next, etc.)
+# ---------------------------------------
+#RewriteEngine On
+#RewriteBase /
+
+# No tocar index.html
+#RewriteRule ^index\.html$ - [L]
+
+# Si no existe archivo ni carpeta, redirige a React
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule . /index.html [L]
+
+
+# =====================================================
+# 📄 ASTRO STATIC ROUTING
+# =====================================================
+# Si el archivo o carpeta existe → servirlo
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]

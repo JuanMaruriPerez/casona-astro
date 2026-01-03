@@ -12,19 +12,60 @@ const description =
 
 const canonical =
   "https://lacasonagroup.it/eventi/partners/";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://lacasonagroup.it/eventi/partners/#collectionpage",
+  "url": "https://lacasonagroup.it/eventi/partners/",
+  "name": "Partners per Eventi | La Casona Group",
+  "description": "Elenco dei partner di La Casona Group: location per eventi, fotografi, flower designer, intrattenimento e professionisti selezionati.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://lacasonagroup.it/#website",
+    "name": "La Casona Group",
+    "url": "https://lacasonagroup.it/"
+  },
+  "about": {
+    "@type": "Event",
+    "name": "Eventi privati e aziendali",
+    "location": {
+      "@type": "City",
+      "name": "Bologna"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "La Casona Group",
+    "url": "https://lacasonagroup.it/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://lacasonagroup.it/assets/svg/CasonaGroupLogo.svg"
+    }
+  },
+  "inLanguage": "it-IT"
+}
 ---
 
-<BaseLayout title={title} description={description} canonical={canonical}>
+<BaseLayout title={title} description={description} canonical={canonical} 
+  ogType="website" schema={schema}>
     <CateringLayout>
         <section class="bg-white pt-48">
             <div class="max-w-6xl mx-auto px-6 text-center">
 
-                <h2 class="text-3xl sm:text-4xl font-bold text-burdeaux mb-2">
+                <h1 class="text-3xl sm:text-4xl font-bold text-burdeaux mb-2">
                 I Nostri Partners
-                </h2>
+                </h1>
 
                 <p class="mb-8">
                 Scopri i professionisti con cui collaboriamo per rendere ogni evento unico.
+                </p>
+
+                <!-- SEO -->
+                <p class="sr-only">
+                La Casona Group collabora con una selezione di location per eventi, fotografi,
+                flower designer, professionisti dell’intrattenimento e fornitori specializzati
+                per matrimoni ed eventi aziendali a Bologna e in Emilia-Romagna.
                 </p>
 
                 <!-- React island -->
