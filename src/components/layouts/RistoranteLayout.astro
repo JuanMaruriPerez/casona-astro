@@ -1,0 +1,12 @@
+---
+import { RistoranteHeader }from "./RistoranteHeader.tsx";
+import RistoranteFooter from "./RistoranteFooter.astro";
+---
+
+<div class="flex min-h-screen flex-col">
+  <RistoranteHeader client:idle />
+  <main class="flex-1 bg-pastel pt-0">
+    <slot />
+  </main>
+  <RistoranteFooter />
+</div>

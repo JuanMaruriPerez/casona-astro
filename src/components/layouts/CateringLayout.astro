@@ -1,0 +1,14 @@
+---
+import { CateringHeader }from "@/components/layouts/CateringHeader.tsx";
+//import CateringHeader from "@/components/layouts/CateringHeader.astro";
+import CateringFooter from "@/components/layouts/CateringFooter.astro";
+---
+
+<div class="min-h-screen flex flex-col">
+  <CateringHeader client:load/>
+  <!--CateringHeader/-->
+  <main class="flex-1 bg-white pt-0">
+    <slot />
+  </main>
+  <CateringFooter/>
+</div>

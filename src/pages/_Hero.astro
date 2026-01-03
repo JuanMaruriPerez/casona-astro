@@ -1,0 +1,81 @@
+<section id="hero">
+  <!-- HERO DIV -->
+  <div
+    class="flex sm:h-[calc(100vh-16em)] md:h-[calc(100vh-13em)] lg:h-[calc(100vh-10em)]
+           flex-col sm:flex-row"
+  >
+    <!-- Lado izquierdo: Catering -->
+    <div
+      class="max-h-[calc(100vh*0.37)] sm:max-h-none
+             relative flex-1 flex items-center justify-center"
+      aria-label="Imagen - eventos"
+    >
+      <img
+        src="/assets/fotos/portada_catering.webp"
+        alt="Eventi La Casona Group: allestimenti eleganti con pani artigianali e colori vivaci, simbolo della creatività e della cura con cui realizziamo ricevimenti e feste personalizzate."
+        class="h-full w-full object-cover"
+        loading="lazy"
+      />
+
+      <!-- Overlay negro -->
+      <div class="absolute inset-0 bg-black/45"></div>
+
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-black/30">
+        <h2
+          class="mb-3 text-2xl sm:text-3xl md:text-4xl lg:text-4xl
+                 font-normal text-white font-lexend drop-shadow-lg"
+        >
+          EVENTI
+        </h2>
+
+        <a
+          href="/eventi"
+          class="border border-white/30 bg-white/10 px-5 py-2
+                 text-xs sm:text-base md:text-lg lg:text-xl
+                 font-normal text-white font-lexend
+                 backdrop-blur hover:bg-white/40
+                 transition-colors duration-200"
+        >
+          SCOPRI
+        </a>
+      </div>
+    </div>
+
+    <!-- Lado derecho: Restaurante -->
+    <div
+      class="max-h-[calc(100vh*0.37)] sm:max-h-none
+             relative flex-1 flex items-center justify-center overflow-hidden"
+      aria-label="Imagen - cocina"
+    >
+      <img
+        src="/assets/fotos/portada_ristorante.webp"
+        alt="Ristorante La Casona Tuttifritti: tavola apparecchiata con piatto di pasta fresca emiliana e calice di vino, rappresentazione della nostra cucina tradizionale e dell’atmosfera accogliente del locale."
+        class="h-full w-full object-cover"
+        loading="eager"
+      />
+
+      <!-- Overlay negro -->
+      <div class="absolute inset-0 bg-black/45"></div>
+
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-black/30">
+        <h2
+          class="mb-3 text-2xl sm:text-3xl md:text-4xl lg:text-4xl
+                 font-normal text-white font-lexend drop-shadow-lg"
+        >
+          RISTORANTE
+        </h2>
+
+        <a
+          href="/ristorante"
+          class="border border-white/30 bg-white/10 px-5 py-2
+                 text-xs sm:text-base md:text-lg lg:text-xl
+                 font-normal text-white font-lexend
+                 backdrop-blur hover:bg-white/40
+                 transition-colors duration-200"
+        >
+          SCOPRI
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

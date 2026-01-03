@@ -1,0 +1,88 @@
+---
+import { BiSolidDish, BiSolidFoodMenu } from "react-icons/bi";
+import { GiPartyFlags } from "react-icons/gi";
+import { MdLocationCity } from "react-icons/md";
+
+const servizi = [
+  {
+    icon: BiSolidFoodMenu,
+    titolo: "Menù",
+    descrizione:
+      "Scegliamo con cura solo le migliori materie prime e produttori di fiducia. Per qualsiasi esigenza alimentare, studiamo insieme a voi menù personalizzati.",
+  },
+  {
+    icon: BiSolidDish,
+    titolo: "Mise en Place",
+    descrizione:
+      "Offriamo un’ampia gamma di allestimenti per la tavola, adatti a ogni gusto e in armonia con il tema scelto. Scopri nel nostro portafolio alcune delle soluzioni create per altri clienti.",
+  },
+  {
+    icon: MdLocationCity,
+    titolo: "Location",
+    descrizione:
+      "Sei indeciso sulla location del tuo evento? Ti aiuteremo a trovare la soluzione perfetta, dalle location più prestigiose del territorio fino a casa tua.",
+  },
+  {
+    icon: GiPartyFlags,
+    titolo: "Allestimenti",
+    descrizione:
+      "Ci teniamo a fare un sopralluogo con voi alla location per poter studiare ogni possibile piano di fattibilità dell’evento. Vi piacerebbe fare un allestimento che segua il vostro tema? Nessun problema! Abbiamo validi collaboratori che potranno soddisfare ogni vostra richiesta.",
+  },
+];
+---
+
+<section class="bg-white pt-16">
+  <div class="max-w-[85%] mx-auto text-center px-6">
+
+    <!-- Titolo -->
+    <h2 class="text-4xl font-bold text-burdeaux mb-4">
+      Tutto Ciò di Cui Hai Bisogno
+    </h2>
+
+    <!-- Sottotitolo -->
+    <p class="max-w-2xl mx-auto">
+      Offriamo servizi integrati per curare ogni dettaglio, dalla pianificazione alla realizzazione.
+    </p>
+    <p class="mb-12 max-w-2xl mx-auto">
+      <strong>Il tuo evento dalla A alla Z.</strong>
+    </p>
+
+    <!-- Griglia servizi -->
+    <div class="flex flex-col xl:flex-row justify-center gap-8">
+      {servizi.map((servizio) => {
+        const Icon = servizio.icon;
+        return (
+          <div
+            class="bg-white p-8 shadow-md text-left
+                   hover:shadow-xl hover:-translate-y-2 hover:scale-[1.02]
+                   transition-all duration-700 ease-out
+                   flex-1 sm:min-w-[300px] lg:min-w-0"
+          >
+            <div class="bg-amarilloPastel w-12 h-12 flex items-center justify-center rounded-sm mb-4">
+              <Icon className="w-8 h-8 text-burdeaux" />
+            </div>
+
+            <h3 class="text-xl font-semibold text-burdeaux mb-2">
+              {servizio.titolo}
+            </h3>
+
+            <p class="text-sm">
+              {servizio.descrizione}
+            </p>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- CTA -->
+    <a
+      href="/eventi/servizi"
+      class="inline-block bg-amarilloPastel text-burdeaux text-xl font-semibold
+             px-4 py-2 my-16 rounded-sm
+             hover:scale-105 transition-all duration-300"
+    >
+      Scopri i Nostri Servizi
+    </a>
+
+  </div>
+</section>

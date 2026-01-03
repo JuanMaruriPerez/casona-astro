@@ -1,0 +1,97 @@
+---
+import CTAActions2 from "@/components/bloques/CTAActions2";
+import BaseLayout from "@/components/layouts/BaseLayout.astro";
+import CateringLayout from "@/components/layouts/CateringLayout.astro";
+
+const title =
+  "Portfolio Eventi | La Casona Group – Matrimoni ed Eventi Realizzati";
+
+const description =
+  "Guarda il portfolio di eventi, matrimoni e ricevimenti realizzati da La Casona Group. Idee, stile e cura dei dettagli.";
+
+const canonical =
+  "https://lacasonagroup.it/eventi/portfolio/";
+
+const eventi = [
+    {
+      titolo: "Matrimonio a Villa Isolani",
+      img: "/assets/fotos/Eventi/villa-isolani.webp",
+      alt:"Allestimento serale per matrimonio a Villa Isolani con illuminazione architettonica e ospiti in giardino",
+    },
+    {
+      titolo: "Evento a Villa Clelia",
+      img: "/assets/fotos/Eventi/Clelia.webp",
+      alt:"Evento a Villa Clelia con postazione gelati e ospiti durante il servizio serale",
+    },
+    {
+      titolo: "Matrimonio a Isolani",
+      img: "/assets/fotos/Eventi/GioySteph.webp" ,
+      alt:"Coppia di sposi durante il ricevimento sotto il portico illuminato di Villa Isolani",
+    },
+    {
+      titolo: "Festa a Palazzo Re Enzo",
+      img: "/assets/fotos/Carrusel/01.webp",
+      alt: "Sala storica di Palazzo Re Enzo allestita per evento con lampadari e mise en place elegante",
+    },
+    {
+      titolo: "Matrimonio a Villa San Marco",
+      img: "/assets/fotos/Eventi/villa-san-marco.webp",
+      alt: "Ricevimento di matrimonio a Villa San Marco con giardino illuminato e tavoli all’aperto",
+    },
+    {
+      titolo: "Matrimonio a Rocca Isolani",
+      img: "/assets/fotos/Eventi/RoccaIsolani.webp",
+      alt: "Tavolo imperiale decorato con fiori freschi per matrimonio a Rocca Isolani",
+    },
+  ];
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+    <CateringLayout>
+        <section class="bg-white pt-48">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+        
+                {/* Titolo */}
+                <h2 class="text-3xl sm:text-4xl font-bold text-burdeaux mb-2">
+                Eventi che Abbiamo Creato
+                </h2>
+        
+                {/* Sottotitolo */}
+                <p class=" mb-12">
+                Scopri alcuni degli eventi più memorabili che abbiamo avuto l’onore di organizzare.
+                </p>
+        
+                {/* Griglia degli eventi */}
+                <div class="flex flex-col lg:grid lg:grid-cols-3 gap-8">
+                {eventi.map((evento) => (
+                    <div class="relative group overflow-hidden shadow-md hover:shadow-xl transition-all duration-500">
+                    <img
+                        src={evento.img}
+                        alt={evento.alt}
+                        loading="lazy"
+                        class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-transparent"></div>
+
+                    <div class="absolute bottom-4 left-0 right-0 flex flex-col items-center justify-center">
+                        <h3 class="mx-1 text-burdeaux text-xl lg:text-lg font-black drop-shadow-lg text-center">
+                        {evento.titolo}
+                        </h3>
+                        <p class="text-green-900 text-sm font-medium">Evento</p>
+                    </div>
+                    </div>
+                ))}
+                </div>
+
+                {/** CTAs */}
+                <div class="flex justify-center items-center">
+                    <div class="flex flex-1 justify-center">
+                        <CTAActions2 client:load />
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </CateringLayout>
+</BaseLayout>

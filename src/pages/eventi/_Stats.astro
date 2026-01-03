@@ -1,0 +1,49 @@
+---
+import { CalendarDays, Users, Award, Heart } from "lucide-react";
+
+const stats = [
+  {
+    icon: CalendarDays,
+    value: "700+",
+    label: "Eventi organizzati all’anno",
+  },
+  {
+    icon: Users,
+    value: "25000+",
+    label: "Clienti felici",
+  },
+  {
+    icon: Award,
+    value: "35+",
+    label: "Anni di esperienza",
+  },
+  {
+    icon: Heart,
+    value: "100%",
+    label: "Dedizione",
+  },
+];
+---
+
+<section class="bg-burdeaux py-12">
+  <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    {stats.map((stat) => {
+      const Icon = stat.icon;
+      return (
+        <div class="flex flex-col items-center gap-2">
+          <div class="bg-amarilloPastel rounded-full p-4 flex items-center justify-center">
+            <Icon className="w-10 h-10 text-burdeaux" />
+          </div>    
+
+          <h3 class="text-3xl font-bold text-amarillo">
+            {stat.value}
+          </h3>
+
+          <p class="text-sm text-white font-light">
+            {stat.label}
+          </p>
+        </div>
+      );
+    })}
+  </div>
+</section>

@@ -1,0 +1,47 @@
+---
+import BaseLayout from "@/components/layouts/BaseLayout.astro";
+import ReturnLayout from "@/components/layouts/ReturnLayout.astro";
+
+const title =
+  "Pagina non trovata | La Casona Group";
+
+const description =
+  "La pagina che stai cercando non esiste o è stata spostata.";
+
+const canonical =
+  "https://lacasonagroup.it/404";
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <ReturnLayout>
+    <section class="flex flex-col items-center gap-6 py-12 text-center">
+
+      <span
+        class="inline-flex items-center gap-2 border border-border/70 bg-secondary/60
+               px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em]
+               text-muted-foreground/80"
+      >
+        Error 404
+      </span>
+
+      <h1 class="text-4xl font-bold text-foreground">
+        Non riusciamo a trovare questa pagina
+      </h1>
+
+      <p class="max-w-md text-base text-muted-foreground">
+        Sembra che questo percorso non sia ancora stato configurato.
+        Torna all'inizio per continuare a esplorare le aree disponibili.
+      </p>
+
+      <a
+        href="/"
+        class="border border-border bg-background px-6 py-3 text-sm font-medium
+               text-foreground shadow-[0_20px_50px_-40px_rgba(19,93,255,0.45)]
+               transition hover:border-primary hover:text-primary"
+      >
+        Ritorna all'inizio
+      </a>
+
+    </section>
+  </ReturnLayout>
+</BaseLayout>

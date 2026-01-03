@@ -1,0 +1,33 @@
+---
+import BaseLayout from "@/components/layouts/BaseLayout.astro";
+import CateringLayout from "@/components/layouts/CateringLayout.astro";
+import Hero from "./_Hero.astro";
+import CTA from "./_CTA.astro";
+import PortafolioHero from "./_PortafolioHero.astro";
+import ServicesHero from "./_ServicesHero.astro";
+import Stats from "./_Stats.astro";
+import Testimonios from "./_Testimonios.astro";
+
+
+const title =
+  "Catering per Eventi | La Casona Group – Bologna e Provincia";
+
+const description =
+  "Catering e banqueting per eventi privati e aziendali. La Casona Group cura ogni dettaglio per eventi eleganti e su misura a Bologna.";
+
+const canonical =
+  "https://lacasonagroup.it/eventi/";
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+    <CateringLayout>
+        <div class="overflow-x-hidden bg-white flex flex-col ">
+            <Hero/>
+            <ServicesHero/>
+            <Stats/>
+            <PortafolioHero/>
+            <Testimonios />
+            <CTA/>
+        </div>
+    </CateringLayout>
+</BaseLayout>

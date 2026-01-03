@@ -1,16 +1,40 @@
 ---
+import MainLayout from "../components/layouts/MainLayout.astro";
+import BaseLayout from "../components/layouts/BaseLayout.astro";
+
+
+const title =
+  "La Casona Group | Catering, Banqueting & Ristorante a Bologna";
+
+const description =
+  "La Casona Group è catering e banqueting per eventi, matrimoni e aziende a Bologna. Trasformiamo ogni occasione in un’esperienza unica, curata in ogni dettaglio.";
+
+const canonical =
+  "https://lacasonagroup.it/";
+
+// Componentes (de momento en React)
+import Hero from "./_Hero.astro";
+import Frase from "./_Frase.astro";
+import IlNostroScopo from "./_IlNostroScopo.astro";
+import INostriValori from "./_INostriValori.astro";
+import Intervista from "./_Intervista.astro";
+import Trovaci from "./_Trovaci.astro";
+import Carrusel from "@/components/bloques/Carrusel";
 
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <MainLayout>
+    <div class="overflow-x-hidden bg-white flex flex-col space-y-[15vh] sm:space-y-[10vh] md:space-y-[8vh]">
+      <Hero />
+      <Frase />
+      <IlNostroScopo />
+      <Intervista />
+      <INostriValori />
+      <div class="flex">
+        <Carrusel client:load />
+      </div>
+      <Trovaci />
+    </div>
+  </MainLayout>
+</BaseLayout>

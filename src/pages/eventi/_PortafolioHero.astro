@@ -1,0 +1,71 @@
+---
+const eventi = [
+  {
+    titolo: "Evento a Villa Clelia",
+    img: "/assets/fotos/Eventi/Clelia.webp",
+    alt: "Evento a Villa Clelia con postazione gelati e ospiti durante il servizio serale",
+  },
+  {
+    titolo: "Festa a Palazzo Re Enzo",
+    img: "/assets/fotos/Carrusel/01.webp",
+    alt: "Sala storica di Palazzo Re Enzo allestita per evento con lampadari e mise en place elegante",
+  },
+  {
+    titolo: "Matrimonio a Rocca Isolani",
+    img: "/assets/fotos/Eventi/RoccaIsolani.webp",
+    alt: "Tavolo imperiale decorato con fiori freschi per matrimonio a Rocca Isolani",
+  },
+];
+---
+
+<section class="bg-amarilloPastel/20 pt-20">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+
+    <!-- Titolo -->
+    <h2 class="text-3xl sm:text-4xl font-bold text-burdeaux mb-2">
+      Eventi che Abbiamo Creato
+    </h2>
+
+    <!-- Sottotitolo -->
+    <p class="mb-12">
+      Scopri alcuni degli eventi più memorabili che abbiamo avuto l’onore di organizzare.
+    </p>
+
+    <!-- Griglia eventi -->
+    <div class="flex flex-col lg:grid lg:grid-cols-3 gap-8">
+      {eventi.map((evento) => (
+        <div
+          class="relative group overflow-hidden shadow-md hover:shadow-xl transition-all duration-500"
+        >
+          <img
+            src={evento.img}
+            alt={evento.alt}
+            class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
+            loading="lazy"
+          />
+
+          <!-- Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-transparent"></div>
+
+          <!-- Titolo -->
+          <div class="absolute bottom-4 left-0 right-0 flex justify-center">
+            <h3 class="mx-1 text-burdeaux text-3xl lg:text-lg font-black drop-shadow-lg text-center">
+              {evento.titolo}
+            </h3>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <a
+      href="/eventi/portfolio"
+      class="inline-block bg-amarilloPastel text-burdeaux text-xl font-semibold
+             px-4 py-2 my-16 rounded-sm
+             hover:scale-105 transition-all duration-300"
+    >
+      Vedi i Nostri Portfolio
+    </a>
+
+  </div>
+</section>

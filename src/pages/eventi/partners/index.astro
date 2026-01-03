@@ -1,0 +1,44 @@
+---
+import CTAActions2 from "@/components/bloques/CTAActions2";
+import  PartnersIsland from "@/components/bloques/PartnersIslands";
+import BaseLayout from "@/components/layouts/BaseLayout.astro";
+import CateringLayout from "@/components/layouts/CateringLayout.astro";
+
+const title =
+  "Partners | La Casona Group – Location e Professionisti per Eventi";
+
+const description =
+  "Scopri i partner di La Casona Group: location, fotografi, flower designer, intrattenimento e professionisti selezionati.";
+
+const canonical =
+  "https://lacasonagroup.it/eventi/partners/";
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+    <CateringLayout>
+        <section class="bg-white pt-48">
+            <div class="max-w-6xl mx-auto px-6 text-center">
+
+                <h2 class="text-3xl sm:text-4xl font-bold text-burdeaux mb-2">
+                I Nostri Partners
+                </h2>
+
+                <p class="mb-8">
+                Scopri i professionisti con cui collaboriamo per rendere ogni evento unico.
+                </p>
+
+                <!-- React island -->
+                <PartnersIsland client:load />
+
+                {/** CTAs */}
+                <div class="flex justify-center items-center">
+                    <div class="flex flex-1 justify-center">
+                        <CTAActions2 client:load />
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </CateringLayout>
+</BaseLayout>
+

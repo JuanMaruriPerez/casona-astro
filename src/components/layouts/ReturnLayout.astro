@@ -1,0 +1,14 @@
+---
+import ReturnHeader from "@/components/layouts/ReturnHeader.astro";
+import MainFooter from "@/components/layouts/MainFooter.astro";
+---
+
+<div class="flex min-h-screen flex-col">
+  <ReturnHeader />
+
+  <main class="flex-1 bg-white pt-0">
+    <slot />
+  </main>
+
+  <MainFooter />
+</div>

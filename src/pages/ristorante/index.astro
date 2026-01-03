@@ -1,0 +1,35 @@
+---
+import BaseLayout from "@/components/layouts/BaseLayout.astro";
+import RistoranteLayout from "@/components/layouts/RistoranteLayout.astro";
+
+const title =
+  "Ristorante | La Casona Group – Cucina Emiliana a Bologna";
+
+const description =
+  "Il ristorante La Casona Group propone cucina emiliana autentica, ingredienti selezionati e un’atmosfera accogliente a Bologna.";
+
+const canonical =
+  "https://lacasonagroup.it/ristorante/";
+
+import Hero from "./_Hero.astro";
+import CTA from "./_CTA.astro";
+import FoodMaking from "./_FoodMaking.astro";
+import Lugar from "./_Lugar.astro";
+import Proposta from "./_Proposta.astro";
+import Proveedores from "./_Proveedores.astro";
+import Testimonios from "@/components/bloques/Testimonios";
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+    <RistoranteLayout>
+        <div class="overflow-x-hidden bg-pastel">
+            <Hero />
+            <Proposta />
+            <FoodMaking />
+            <Proveedores />
+            <Lugar />
+            <Testimonios client:load />
+            <CTA />
+        </div>
+    </RistoranteLayout>
+</BaseLayout>

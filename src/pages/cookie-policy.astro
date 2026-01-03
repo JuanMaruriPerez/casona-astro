@@ -1,0 +1,198 @@
+---
+import BaseLayout from "@/components/layouts/BaseLayout.astro";
+import ReturnLayout from "@/components/layouts/ReturnLayout.astro";
+
+const title =
+  "Cookie Policy | La Casona Group";
+
+const description =
+  "Informativa sull’utilizzo dei cookie del sito La Casona Group e sulle modalità di gestione delle preferenze.";
+
+const canonical =
+  "https://lacasonagroup.it/cookie-policy/";
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <ReturnLayout>
+    <section class="max-w-5xl mx-auto px-6 py-12 text-gray-800 leading-relaxed">
+
+      <h1 class="text-3xl md:text-4xl font-semibold mb-8 text-center">
+        Cookie Policy
+      </h1>
+
+      <h2 class="text-xl font-semibold mb-4">
+        Cosa sono i cookie?
+      </h2>
+
+      <p class="mb-4">
+        Per rendere i propri servizi il più possibile efficienti e semplici da utilizzare,
+        questo Sito fa uso di cookie. Quando si visita il Sito, una quantità minima di
+        informazioni viene salvata sul dispositivo dell’Utente sotto forma di piccoli file
+        di testo chiamati “cookie”, memorizzati nella directory del browser Web.
+     </p>
+
+      <p class="mb-4">
+        Esistono diversi tipi di cookie, ma lo scopo principale è far funzionare più
+        efficacemente il Sito e abilitarne determinate funzionalità. I cookie vengono
+        utilizzati, tra l&apos;altro, per:
+       </p>
+
+      <ul class="list-disc pl-5 mb-6 space-y-2">
+       <li>Consentire la navigazione efficiente tra le pagine del sito.</li>
+        <li>Memorizzare alcune preferenze di base dell’Utente.</li>
+        <li>Evitare di inserire le stesse informazioni più volte.</li>
+        <li>Misurare in forma aggregata l’utilizzo dei servizi per ottimizzare l’esperienza.</li>
+     </ul>
+
+      <p class="mb-6">
+          Qui di seguito sono riportate le principali tipologie di cookie che possono essere
+        utilizzate sul Sito, con una descrizione della relativa finalità.
+     </p>
+
+      <!-- Cookie tecnici -->
+      <h3 class="text-lg font-semibold mt-8 mb-2">
+        Cookie Tecnici
+      </h3>
+
+      <p class="mb-4">
+        I cookie tecnici sono necessari per il corretto funzionamento del Sito e per
+        consentire la navigazione o l&apos;utilizzo di alcune sue funzionalità di base
+        (ad esempio, il salvataggio della scelta relativa al banner dei cookie).
+        Senza questi cookie alcune parti del Sito potrebbero non funzionare correttamente.
+        Per tali cookie non è richiesto il consenso preventivo dell&apos;Utente.
+      </p>
+
+      <!-- Cookie analitici -->
+      <h3 class="text-lg font-semibold mt-8 mb-2">
+        Cookie Analitici
+      </h3>
+
+      <p class="mb-4">
+         Questo Sito utilizza cookie analitici, anche di terza parte, per raccogliere
+        informazioni in forma aggregata sull&apos;utilizzo del Sito (pagine visitate,
+        tempo di permanenza, interazioni, ecc.). Questi dati vengono utilizzati
+        esclusivamente per analisi statistiche, per migliorare i contenuti e per
+        monitorare il corretto funzionamento del Sito.
+       </p>
+
+      <p class="mb-4">
+       In particolare, il Sito utilizza il servizio <strong>Microsoft Clarity</strong>,
+        che può impostare propri cookie per analizzare in forma anonima e aggregata
+        il comportamento di navigazione degli utenti (ad esempio sessioni, interazioni
+        con le pagine, tipologia di dispositivo). Per maggiori informazioni si rimanda
+        all&apos;informativa privacy del fornitore:
+        {" "}
+        <a
+          href="https://privacy.microsoft.com/it-it/privacystatement"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-[#3E061E] hover:underline"
+        >
+          Microsoft Privacy Statement
+        </a>.
+      </p>
+
+      <!-- Terze parti -->
+      <h3 class="text-lg font-semibold mt-8 mb-2">
+        Cookie per l’Integrazione di Funzionalità di Terze Parti
+      </h3>
+
+      <p class="mb-4">
+        Il Sito può integrare funzionalità fornite da terze parti (ad esempio icone o
+        collegamenti a social network, mappe, player video incorporati). Tali soggetti
+        possono utilizzare propri cookie per gestire le relative funzionalità o
+        raccogliere informazioni in forma aggregata sull&apos;utilizzo.
+     </p>
+
+     <p class="mb-4">
+        Le informazioni raccolte e l’uso delle stesse da parte di terze parti sono
+        disciplinati dalle rispettive informative privacy, alle quali si rimanda per
+        ogni dettaglio.
+      </p>
+
+      <!-- Consenso -->
+      <h3 class="text-lg font-semibold mt-8 mb-2">
+        Consenso all’uso dei cookie e gestione delle preferenze
+      </h3>
+
+
+      <p class="mb-4">
+        I cookie tecnici vengono installati automaticamente poiché necessari al
+        funzionamento del Sito. Per i cookie analitici e per quelli di terze parti,
+        l’Utente può esprimere il proprio consenso tramite le impostazioni del
+        browser o tramite le impostazioni del dispositivo utilizzato.
+       </p>
+
+        <p class="mb-4">
+        È possibile disabilitare in qualsiasi momento i cookie modificando le
+        impostazioni del proprio browser; tuttavia, la disattivazione dei cookie
+        tecnici potrebbe compromettere il corretto funzionamento di alcune parti
+        del Sito.
+      </p>
+
+      <!-- Browser links -->
+      <h3 class="text-lg font-semibold mt-8 mb-2">
+        Come posso controllare l’installazione dei cookie?
+      </h3>
+      <p class="mb-4">
+        L’Utente può gestire le preferenze relative ai cookie direttamente dal
+        proprio browser e impedire – ad esempio – che terze parti possano
+        installarne. È anche possibile eliminare i cookie installati in passato,
+        incluso il cookie che eventualmente memorizza il consenso all&apos;uso dei
+        cookie da parte di questo Sito.
+      </p>
+
+      <p class="mb-4">
+        Di seguito alcuni link alle pagine di supporto dei principali browser:
+      </p>
+
+       <ul class="list-disc pl-5 mb-6 space-y-2">
+        <li>
+          <a
+            href="https://support.google.com/chrome/answer/95647?hl=it"
+            class="text-[#3E061E] hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google Chrome
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://support.mozilla.org/it/kb/Gestione%20dei%20cookie"
+            class="text-[#3E061E] hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Mozilla Firefox
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://support.apple.com/it-it/guide/safari/sfri11471/mac"
+            class="text-[#3E061E] hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Apple Safari
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://support.microsoft.com/it-it/help/17442/windows-internet-explorer-delete-manage-cookies"
+            class="text-[#3E061E] hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Microsoft Internet Explorer / Edge
+          </a>
+        </li>
+      </ul>
+      <p class="mb-4">
+        In caso di servizi erogati da terze parti, l’Utente può esercitare il proprio
+        diritto ad opporsi al tracciamento consultando la relativa privacy policy
+        o contattando direttamente il soggetto terzo.
+      </p>
+    </section>
+  </ReturnLayout>
+</BaseLayout>

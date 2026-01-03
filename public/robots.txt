@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lacasonagroup.it/sitemap-index.xml

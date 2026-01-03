@@ -1,0 +1,30 @@
+---
+import  CTAActions  from "@/components/bloques/CTAActions";
+---
+
+<section class="bg-pastel py-24 text-center">
+  <h2 class="text-4xl md:text-5xl text-burdeaux mb-4">
+    Vieni a Trovarci
+  </h2>
+
+  <p class="text-lg text-burdeaux mb-10">
+    Ti aspettiamo per farti assaporare l'autentica tradizione emiliana
+  </p>
+
+  <div class="flex justify-center items-center">
+    <div class="flex flex-1 gap-x-1 mx-[70%]">
+      <!-- React island -->
+      <CTAActions client:load />
+
+      <!-- Link estático -->
+      <a
+        href="/ristorante/menu"
+        class="flex-1 text-center border border-2 border-burdeaux/60 px-5 py-2
+               text-xs sm:text-base md:text-lg lg:text-xl font-normal text-burdeaux
+               hover:bg-burdeaux hover:scale-105 hover:text-white transition-transform duration-200"
+      >
+        Menù
+      </a>
+    </div>
+  </div>
+</section>

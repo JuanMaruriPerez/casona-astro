@@ -1,0 +1,14 @@
+---
+import MainHeader from "./MainHeader.astro";
+import MainFooter from "./MainFooter.astro";
+---
+
+<div class="flex min-h-screen flex-col">
+  <MainHeader />
+
+  <main class="flex-1">
+    <slot />
+  </main>
+
+  <MainFooter />
+</div>

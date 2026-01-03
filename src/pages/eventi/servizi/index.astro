@@ -1,0 +1,194 @@
+---
+import BaseLayout from "@/components/layouts/BaseLayout.astro";
+import CateringLayout from "@/components/layouts/CateringLayout.astro";
+
+const title =
+  "Servizi Catering | La Casona Group – Eventi su Misura";
+
+const description =
+  "Scopri tutti i servizi di catering La Casona Group: menù personalizzati, allestimenti, location, beverage, intrattenimento e molto altro.";
+
+const canonical =
+  "https://lacasonagroup.it/eventi/servizi/";
+
+import { BiSolidDish } from 'react-icons/bi';
+import { MdLocationCity } from 'react-icons/md';
+import { BiSolidFoodMenu } from 'react-icons/bi';
+import { IoMdRestaurant } from 'react-icons/io';
+import { GiFlowerPot,  GiPartyFlags } from 'react-icons/gi';
+import { IoIosCamera } from 'react-icons/io';
+import { BsCakeFill } from 'react-icons/bs';
+import { GiCook } from 'react-icons/gi';
+import { MdGroupAdd } from 'react-icons/md';
+import { GiWineBottle } from 'react-icons/gi';
+import { FaTruck } from 'react-icons/fa';
+import { HiMiniBuildingLibrary } from 'react-icons/hi2';
+import { HiMiniCubeTransparent } from 'react-icons/hi2';
+import { GiPartyPopper } from 'react-icons/gi';
+import { PackagePlus} from "lucide-react";
+
+import { cn } from '@/lib/utils';
+import CTAActions2 from "@/components/bloques/CTAActions2";
+
+ const servizi = [
+    {
+      icon: BiSolidFoodMenu,
+      titolo: "Menù",
+      descrizione:
+        "Selezioniamo con cura solo le migliori materie prime e produttori di fiducia. Per ogni esigenza alimentare, creiamo insieme a voi menù personalizzati.",
+    },
+    {
+      icon: IoMdRestaurant,
+      titolo: "Catering Gourmet",
+      descrizione:
+        "Esperienze gastronomiche uniche con piatti curati nei minimi dettagli e presentazioni d’effetto.",
+    },
+    {
+      icon: BiSolidDish,
+      titolo: "Mise en Place",
+      descrizione:
+        "Proponiamo un’ampia gamma di allestimenti per la tavola, adatti a ogni gusto e in armonia con il tema scelto.",
+    },
+    {
+      icon: MdLocationCity,
+      titolo: "Location",
+      descrizione:
+        "Ti aiutiamo a trovare la location perfetta per il tuo evento, dalle più prestigiose del territorio fino alla tua casa.",
+    },
+    {
+      icon: GiPartyFlags,
+      titolo: "Allestimenti",
+      descrizione:
+        "Ci teniamo a fare un sopralluogo con voi alla location per poter studiare ogni possibile piano di fattibilità dell’evento. Vi piacerebbe fare un allestimento che segua il vostro tema? Nessun problema! Abbiamo validi collaboratori che potranno soddisfare ogni vostra richiesta.",
+    },
+    {
+      icon: GiFlowerPot,
+      titolo: " Design Floreale",
+      descrizione:
+        "Progettiamo e realizziamo composizioni floreali che rendono ogni spazio unico e suggestivo.",
+    },
+    {
+      icon: IoIosCamera,
+      titolo: "Fotografia & Video",
+      descrizione:
+        "Catturiamo ogni momento speciale con professionisti esperti e attrezzatura all’avanguardia.",
+    },
+    {
+      icon: BsCakeFill,
+      titolo: "Cake Design",
+      descrizione:
+        "Creiamo torte scenografiche e personalizzate, perfette per completare il tema del tuo evento.",
+    },
+    {
+      icon: GiCook,
+      titolo: "Show Cooking",
+      descrizione:
+        "Rendiamo il tuo evento ancora più coinvolgente con esperienze culinarie dal vivo e corner tematici.",
+    },
+    {
+      icon: MdGroupAdd,
+      titolo: "Servizio di Camerieri",
+      descrizione:
+        "Personale qualificato e attento per garantire un servizio impeccabile in ogni momento del ricevimento.",
+    },
+    {
+      icon: GiWineBottle,
+      titolo: "Beverage & Bar",
+      descrizione:
+        "Cocktail, vini selezionati e proposte beverage pensate per accompagnare al meglio il tuo menù.",
+    },
+    {
+      icon: FaTruck ,
+      titolo: "Trasporto",
+      descrizione:
+        "Servizio logistico e di trasporto per staff, attrezzature e materiali, in totale sicurezza e puntualità.",
+    },
+    {
+      icon: HiMiniBuildingLibrary,
+      titolo: "Cerimonia",
+      descrizione:
+        "Organizziamo cerimonie simboliche e religiose, curando ogni dettaglio per un momento indimenticabile.",
+    },
+    {
+      icon: HiMiniCubeTransparent,
+      titolo: "Affitto di Materiale",
+      descrizione:
+        "Forniamo stoviglie, tovagliato, cristalleria e arredi per eventi di qualsiasi dimensione.",
+    },
+    {
+      icon: GiPartyPopper,
+      titolo: "Illuminazione & Spettacolo",
+      descrizione:
+        "Progettiamo scenografie luminose e spettacoli su misura per creare atmosfere uniche e coinvolgenti.",
+    },
+    {
+      //icon: <BiSolidPlusCircle className="w-8 h-8 text-amarilloPastel" />,
+      icon: PackagePlus,
+      titolo: "E Molti Altri Servizi su Misura",
+      descrizione:
+        "Ogni evento è diverso: raccontaci la tua idea e realizzeremo insieme un progetto personalizzato.",
+      highlight: true,
+    },
+  ];
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+    <CateringLayout>
+        <section class="bg-white pt-48">
+            <div class="max-w-6xl mx-auto text-center px-6">
+
+                <h2 class="text-4xl font-bold text-burdeaux mb-4">
+                Tutto ciò di cui hai bisogno
+                </h2>
+
+                <p class="max-w-2xl mx-auto">
+                Offriamo servizi integrati per curare ogni dettaglio, dalla pianificazione alla realizzazione.
+                </p>
+                <p class="mb-12 max-w-2xl mx-auto">
+                <strong>Il tuo evento dalla A alla Z.</strong>
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {servizi.map((servizio) => {
+                    const Icon = servizio.icon;
+                    return (
+                    <div
+                        class={cn(
+                        "bg-white p-8 shadow-md text-left transition-all duration-700 ease-out hover:shadow-xl hover:-translate-y-2 hover:scale-[1.02]",
+                        servizio.highlight && "bg-amarilloPastel/70"
+                        )}
+                    >
+                        <div
+                        class={cn(
+                            "bg-amarilloPastel w-12 h-12 flex items-center justify-center rounded-sm mb-4",
+                            servizio.highlight && "text-amarilloPastel bg-burdeaux"
+                        )}
+                        >
+                        <Icon
+                            className={cn(
+                                "w-8 h-8",
+                                servizio.highlight ? "text-amarilloPastel" : "text-burdeaux"
+                            )}
+                            />
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-burdeaux mb-2">
+                        {servizio.titolo}
+                        </h3>
+
+                        <p class="text-sm">{servizio.descrizione}</p>
+                    </div>
+                    );
+                })}
+                </div>
+
+                <div class="flex justify-center items-center">
+                    <div class="flex flex-1 justify-center">
+                        <CTAActions2 client:load />
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </CateringLayout>
+</BaseLayout>
