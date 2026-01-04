@@ -1,11 +1,14 @@
 ---
 import { RistoranteHeader }from "./RistoranteHeader.tsx";
 import RistoranteFooter from "./RistoranteFooter.astro";
+import Preloader from "../bloques/Preloader";
 ---
 
 <div class="flex min-h-screen flex-col">
   <RistoranteHeader client:idle />
   <main class="flex-1 bg-pastel pt-0">
+    <!-- Preloader: se ejecuta solo en cliente -->
+    <Preloader client:load />
     <slot />
   </main>
   <RistoranteFooter />

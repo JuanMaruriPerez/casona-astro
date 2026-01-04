@@ -3,10 +3,10 @@ import BaseLayout from "@/components/layouts/BaseLayout.astro";
 import RistoranteLayout from "@/components/layouts/RistoranteLayout.astro";
 
 const title =
-  "Ristorante | La Casona Group – Cucina Emiliana a Bologna";
+  "Ristorante La Casona tutti fritti | La Casona Group – Cucina Emiliana a Bologna";
 
 const description =
-  "Il ristorante La Casona Group propone cucina emiliana autentica, ingredienti selezionati e un’atmosfera accogliente a Bologna.";
+  "Il ristorante La Casona Tutti Fritti, a San Giovanni in Persiceto (Bologna), propone cucina emiliana autentica con crescentine e tigelle tradizionali, piatti tipici bolognesi e ingredienti selezionati in un’atmosfera accogliente.";
 
 const canonical =
   "https://lacasonagroup.it/ristorante/";
@@ -39,7 +39,14 @@ import Testimonios from "@/components/bloques/Testimonios";
 ---
 
 <BaseLayout title={title} description={description} canonical={canonical} ogImage={ogImage}
-  ogType={ogType} schema={schema}>
+  ogType={ogType} schema={schema}
+  ogType="website" schema={schema}
+  preloadVideos={[
+    {
+      src: "/assets/video/ristorante-portada-720.webm",
+      type: "video/webm",
+    },
+  ]}>
     <RistoranteLayout>
         <div class="overflow-x-hidden bg-pastel">
             <Hero />

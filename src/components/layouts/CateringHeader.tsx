@@ -30,7 +30,7 @@ export const CateringHeader = () => {
   }, []);
 
   useEffect(() => {
-    setIsEventiPage(window.location.pathname === "/eventi");
+    setIsEventiPage(/^\/eventi\/?$/.test(window.location.pathname));
   }, []);
 
   // 👇 Condición: si no estoy en /eventi, forzamos scrolled=true

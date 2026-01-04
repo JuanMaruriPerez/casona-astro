@@ -17,11 +17,80 @@ Redirect 301 /home/wedding-eventi-privati/ /eventi/
 Redirect 301 /home/eventi-aziendali/ /eventi/
 Redirect 301 /eventi-aziendali/ /eventi/
 
+# --- BLOG - GONE (redireccionar a página de contenido no disponible)
+Redirect 301 /ripartiamo-con-il-nostro-percorso-in-sicurezza-il-fienile/ /contenuto-non-disponible/
+Redirect 301 /la-casona-tutti-fritti-spuntino-di-mezzanotte-venerdi-e-sabato-sera/ /contenuto-non-disponible/
+Redirect 301 /ambaradan-il-fienile/ /contenuto-non-disponible/
+Redirect 301 /la-casona-tutti-fritti-ristorante-con-ampia-veranda-e-giardino/ /contenuto-non-disponible/
+
 # --- LOCATION → filtro dinamico (usa RewriteRule)
 RewriteRule ^location/?$ /eventi/partners?category=location [R=301,L,QSA]
 
+# --- PORTFOLIO -> PARTNERS
+Redirect 301 /portfolio-items/fiori-decori/ /eventi/partners?partner=fiori-decori
+Redirect 301 /portfolio-items/1piu1wedding/ /eventi/partners?partner=1piu1wedding
+Redirect 301 /portfolio-items/il-gelato-di-fini/ /eventi/partners?partner=il-gelato-di-fini
+Redirect 301 /portfolio-items/il-mago-delle-torte/ /eventi/partners?partner=il-mago-delle-torte
+Redirect 301 /portfolio-items/tenuta-bonzara/ /eventi/partners?partner=tenuta-bonzara
+Redirect 301 /portfolio-items/rocca-isolani-e-villa-carlo-v/ /eventi/partners?partner=rocca-isolani-e-villa-carlo-v
+Redirect 301 /portfolio-items/villa-isolani/ /eventi/partners?partner=villa-isolani
+Redirect 301 /portfolio-items/palazzo-isolani/ /eventi/partners?partner=palazzo-isolani
+Redirect 301 /portfolio-items/cartorange/ /eventi/partners?partner=cartorange
+Redirect 301 /portfolio-items/ali-di-zucchero/ /eventi/partners?partner=ali-di-zucchero
+Redirect 301 /portfolio-items/trentakarte-showband/ /eventi/partners?partner=trentakarte-showband
+Redirect 301 /portfolio-items/villa-ca-bianca/ /eventi/partners?partner=villa-ca-bianca
+Redirect 301 /portfolio-items/fotojet-studio-fotografico/ /eventi/partners?partner=fotojet-studio-fotografico
+Redirect 301 /portfolio-items/colpo-sicuro-partyband/ /eventi/partners?partner=colpo-sicuro-partyband
+Redirect 301 /portfolio-items/gspot-labs/ /eventi/partners?partner=gspot-labs
+Redirect 301 /portfolio-items/villa-contessa-massari/ /eventi/partners?partner=villa-contessa-massari
+Redirect 301 /portfolio-items/ab-service/ /eventi/partners?partner=ab-service
+
+Redirect 301 /portfolio-items/valerio-lelli-fotografo/ /eventi/partners/
+Redirect 301 /portfolio-items/cristian-cordisco-dj/ /eventi/partners/
+
+Redirect 301 /categoria_portfolio/agenzia-viaggi/ /eventi/partners?category=agenzia-viaggi
+Redirect 301 /categoria_portfolio/cake-design/ /eventi/partners?category=cake-design
+Redirect 301 /categoria_portfolio/flower-design/ /eventi/partners?category=flower-design
+Redirect 301 /categoria_portfolio/foto-e-video/ /eventi/partners?category=foto-video
+Redirect 301 /categoria_portfolio/grafica/ /eventi/partners?category=grafica
+Redirect 301 /categoria_portfolio/intrattenimento/ /eventi/partners?category=intrattenimento
+Redirect 301 /categoria_portfolio/location/ /eventi/partners?category=location
+Redirect 301 /categoria_portfolio/luci-e-impianti-audio/ /eventi/partners?category=luci-audio
+
+Redirect 301 /categoria_portfolio/cerimonia/ /eventi/partners/
+
+# --- Catch-all: cualquier otro portfolio-item o categoria_portfolio
+# RedirectMatch 301 ^/portfolio-items/.*$ https://lacasonagroup.it/eventi/partners/
+# RedirectMatch 301 ^/categoria_portfolio/.*$ https://lacasonagroup.it/eventi/partners/
+#RedirectMatch 301 ^/portfolio-items/.*$ /eventi/partners/
+#RedirectMatch 301 ^/categoria_portfolio/.*$ /eventi/partners/
+
+
+# --- PAUSA TÉCNICA TEMPORAL – mise-en-place
+RewriteRule ^(mise-en-place|home/il-fienile)/?$ - [R=503,L]
+Header always set Retry-After "1209600"
+ErrorDocument 503 /503
+
 # --- GONE Candidatos
 #Redirect gone /mise-en-place/ 
+
+# --- CONTENIDO TÉCNICO ELIMINADO (410 GONE)
+Redirect gone /element_category/elements/
+Redirect gone /element_category/sections/
+
+Redirect gone /slide-page/aziendale-slider/
+Redirect gone /slide-page/bar-slider/
+Redirect gone /slide-page/home-slider/
+Redirect gone /slide-page/risto-slider/
+Redirect gone /slide-page/wedding-slider/
+
+# --- SITEMAPS LEGACY (WordPress / Avada) — ELIMINADOS
+Redirect gone /post-sitemap.xml
+Redirect gone /page-sitemap.xml
+Redirect gone /avada_portfolio-sitemap.xml
+Redirect gone /portfolio_category-sitemap.xml
+Redirect gone /element_category-sitemap.xml
+Redirect gone /slide-page-sitemap.xml
 
 # ---------------------------------------
 # 🔒 SECURITY HEADERS (Lighthouse Best Practices)
@@ -30,7 +99,7 @@ RewriteRule ^location/?$ /eventi/partners?category=location [R=301,L,QSA]
     # Evita que tu web se pueda incrustar en iframes (clickjacking)
     Header always set X-Frame-Options "DENY"
 
-    # Previene ataques de sniffing MIME
+    # Previene ataques de sniffing MIME # Comentar si safari da problemas
     Header always set X-Content-Type-Options "nosniff"
 
     # Protección básica contra XSS
@@ -44,6 +113,27 @@ RewriteRule ^location/?$ /eventi/partners?category=location [R=301,L,QSA]
 
     # 🛑 HSTS (solo si ya tienes HTTPS totalmente forzado)
     Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+
+    # WebM
+  <FilesMatch "\.webm$">
+    Header unset Content-Encoding
+    Header always set Content-Type video/webm
+  </FilesMatch>
+
+  # MP4
+  <FilesMatch "\.mp4$">
+    Header unset Content-Encoding
+    Header always set Content-Type video/mp4
+  </FilesMatch>
+
+</IfModule>
+
+# ---------------------------------------
+# 🚫 DISABLE GZIP FOR VIDEOS
+# ---------------------------------------
+<IfModule mod_deflate.c>
+  SetEnvIfNoCase Request_URI \.webm$ no-gzip
+  SetEnvIfNoCase Request_URI \.mp4$ no-gzip
 </IfModule>
 
 # ---------------------------------------
@@ -56,12 +146,14 @@ RewriteRule ^location/?$ /eventi/partners?category=location [R=301,L,QSA]
         script-src 'self' https:;
         style-src 'self' 'unsafe-inline' https:;
         font-src 'self' https: data:;
-        connect-src 'self';
+        connect-src 'self' https:;
         object-src 'none';
         base-uri 'self';
         frame-ancestors 'none';
     "
 </IfModule>
+
+
 
 # ---------------------------------------
 # 🔁 SPA ROUTING (React, Vite, Next, etc.)
@@ -85,3 +177,14 @@ RewriteRule ^location/?$ /eventi/partners?category=location [R=301,L,QSA]
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
+
+# =========================================
+# 🚫 404 GLOBAL (ASTRO STATIC)
+# =========================================
+
+ErrorDocument 404 /404.html
+
+# Si NO existe archivo ni carpeta → 404
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . - [R=404,L]

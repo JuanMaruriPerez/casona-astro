@@ -27,7 +27,7 @@ export const RistoranteHeader = () => {
         <div className="flex-1 flex justify-start items-center">
           <a href="/ristorante" className="flex" >
           <img
-            src="assets/svg/LaCasonaRistorante.svg" // cambia la ruta por tu logo
+            src="/assets/svg/LaCasonaRistorante.svg" // cambia la ruta por tu logo
             alt="Logo Ristorante - La Casona Tuttifritti"
             className="h-16 w-auto"
           />
@@ -39,7 +39,7 @@ export const RistoranteHeader = () => {
           <div className="hidden [@media(min-width:850px)]:flex flex-1 flex justify-center items-center">
           
             <img
-              src="assets/svg/LaCasonaGroup.svg" // cambia la ruta por tu logo
+              src="/assets/svg/LaCasonaGroup.svg" // cambia la ruta por tu logo
               alt="Logo La Casona Group"
               className="max-h-3 w-auto"
             />

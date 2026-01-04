@@ -1,5 +1,7 @@
 ---
-const VIDEO_SRC = "/assets/video/ristorante_720p.webm";
+//const VIDEO_SRC = "/assets/video/ristorante_720p.webm";
+const VIDEO_SRC = "/assets/video/ristorante-portada-720.webm";
+const VIDEO_SRC2 = "/assets/video/ristorante-portada-720.mp4";
 ---
 
 <section id="inicio" class="relative h-[100vh]">
@@ -9,15 +11,20 @@ const VIDEO_SRC = "/assets/video/ristorante_720p.webm";
     <div class="absolute inset-0 flex items-center justify-center">
       <div class="relative h-[100vh] w-[100vw] overflow-hidden shadow-2xl">
         <video
+          id="hero-rist-video"
           class="absolute inset-0 h-full w-full object-cover"
-          src={VIDEO_SRC}
           autoplay
+          preload="auto"
           muted
           playsinline
           loop
-          preload="auto"
           aria-label="Video del Ristorante La Casona Tuttifritti che mostra il nostro chef all’opera, piatti tipici della cucina bolognese preparati al momento, dettagli della sala e dell’ambiente accogliente, insieme all’organizzazione interna della cucina e del servizio."
-        ></video>
+        >         
+          <!-- WebM primero -->
+          <source src={VIDEO_SRC} type="video/webm" />
+          <!-- Fallback universal -->
+          <source src={VIDEO_SRC2} type="video/mp4" /-->
+        </video>
       </div>
 
       <!-- Overlay negro -->
@@ -49,3 +56,28 @@ const VIDEO_SRC = "/assets/video/ristorante_720p.webm";
 
   </div>
 </section>
+
+<!-- Script SOLO cliente >
+<script>
+  const video = document.querySelector<HTMLVideoElement>("#hero-rist-video");
+
+  if (video) {
+    video.muted = true;
+
+    const startVideo = () => {
+      video.play().catch(() => {
+        // Reintento suave (Firefox)
+        setTimeout(() => {
+          video.play().catch(() => {});
+        }, 300);
+      });
+    };
+
+    // 🔑 CLAVE: esperar a que Firefox diga "puedo reproducir"
+    if (video.readyState >= 3) {
+      startVideo();
+    } else {
+      video.addEventListener("canplay", startVideo, { once: true });
+    }
+  }
+</script-->

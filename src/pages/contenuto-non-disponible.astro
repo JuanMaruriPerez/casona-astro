@@ -1,0 +1,74 @@
+---
+import BaseLayout from "@/components/layouts/BaseLayout.astro";
+import ReturnLayout from "@/components/layouts/ReturnLayout.astro";
+
+const title =
+  "Contenuto non disponibile | La Casona Group";
+
+const description =
+  "Questo contenuto non è più disponibile. Scopri La Casona Group, il ristorante o l’area eventi.";
+
+const canonical =
+  "https://lacasonagroup.it/contenuto-non-disponibile/";
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <ReturnLayout>
+    <section class="flex flex-col items-center gap-10 py-20 text-center px-6">
+
+      <span
+        class="inline-flex items-center gap-2 
+               px-4 py-1 text-sm font-semibold uppercase tracking-[0.25em]
+               text-muted-foreground/80"
+      >
+        Contenuto archiviato
+      </span>
+
+      <h1 class="text-4xl sm:text-5xl font-bold text-foreground">
+        Questa pagina non è più disponibile
+      </h1>
+
+      <p class="max-w-xl text-base sm:text-lg text-muted-foreground">
+        Il contenuto che stai cercando è stato rimosso o integrato in una nuova
+        struttura del sito. Puoi continuare la navigazione esplorando le aree
+        principali di La Casona Group.
+      </p>
+
+      {/* CTA buttons */}
+      <div class="flex flex-col sm:flex-row gap-4 mt-6">
+
+        <a
+          href="/"
+          class="border border-black/30 bg-black/10 px-6 py-3
+                 text-sm sm:text-base font-normal text-black
+                 backdrop-blur hover:bg-white/40
+                 transition-colors duration-200"
+        >
+          La Casona Group
+        </a>
+
+        <a
+          href="/ristorante"
+          class="border border-black/30 bg-black/10 px-6 py-3
+                 text-sm sm:text-base font-normal text-black
+                 backdrop-blur hover:bg-white/40
+                 transition-colors duration-200"
+        >
+          Ristorante
+        </a>
+
+        <a
+          href="/eventi"
+          class="border border-black/30 bg-black/10 px-6 py-3
+                 text-sm sm:text-base font-normal text-black
+                 backdrop-blur hover:bg-white/40
+                 transition-colors duration-200"
+        >
+          Eventi
+        </a>
+
+      </div>
+
+    </section>
+  </ReturnLayout>
+</BaseLayout>

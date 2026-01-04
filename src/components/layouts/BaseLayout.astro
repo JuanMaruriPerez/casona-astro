@@ -1,5 +1,7 @@
 ---
 import "@/styles/global.css";
+import Preloader from "@/components/bloques/Preloader";
+import CookieBanner from "@/components/bloques/banner-cookies";
 
 const {
   title = "La Casona Group | Catering, Banqueting & Ristorante a Bologna",
@@ -8,6 +10,7 @@ const {
   ogImage = "https://lacasonagroup.it/assets/og/la-casona-og.jpg",
   ogType = "website",
   preloadImages = [],
+  preloadVideos = [],
   schema = null,
 } = Astro.props;
 
@@ -64,20 +67,15 @@ const defaultSchema = {
       <link rel="preload" as="image" href={imgPre} />
     ))}
     <!-- Preload vídeos hero -->
-    <link
-      rel="preload"
-      href="/assets/video/catering_720p.webm"
-      as="fetch"
-      type="video/webm"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="/assets/video/ristorante_720p.webm"
-      as="fetch"
-      type="video/webm"
-      crossorigin="anonymous"
-    />
+    {preloadVideos.map(({ src, type }) => (
+      <link
+        rel="preload"
+        as="fetch"
+        href={src}
+        type={type}
+      />
+    ))}
+
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -112,7 +110,14 @@ const defaultSchema = {
   </head>
 
   <body>
+    <!-- Preloader: se ejecuta solo en cliente -->
+    <Preloader client:load />
+
+    <!-- Contenido de la página -->
     <slot />
+
+    <!-- Cookie banner: solo cliente -->
+    <CookieBanner client:load />
 
     <!-- Portal root para modales React -->
     <div id="modal-root"></div>

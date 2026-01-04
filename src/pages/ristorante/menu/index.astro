@@ -7,7 +7,7 @@ const title =
   "Menù Ristorante La Casona Tutti Fritti | Cucina Emiliana a Bologna";
 
 const description =
-  "Scopri il menù del ristorante La Casona Tutti Fritti a Bologna: crescentine, tigelle e piatti della tradizione emiliana, preparati con ingredienti selezionati di qualità.";
+  "Scopri il menù del ristorante La Casona Tutti Fritti, a San Giovanni in Persiceto (Bologna): crescentine, tigelle e piatti della tradizione emiliana, preparati con ingredienti selezionati di qualità.";
 
 const canonical =
   "https://lacasonagroup.it/ristorante/menu/";
@@ -59,12 +59,26 @@ const schema = [
       "@type": "Restaurant",
       "@id": "https://lacasonagroup.it/ristorante/#restaurant",
       "name": "La Casona Tutti Fritti",
+      "url": "https://lacasonagroup.it/ristorante/",
+      "telephone": "+39 051 687 1713",
+      "priceRange": "€€",
       "servesCuisine": "Cucina emiliana",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Bologna",
+        "streetAddress": "Via Bologna, 114/b",
+        "addressLocality": "San Giovanni in Persiceto",
+        "addressRegion": "BO",
+        "postalCode": "40017",
         "addressCountry": "IT"
-      }
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 44.7059,
+        "longitude": 11.1887
+      },
+      "sameAs": [
+        "https://www.google.com/maps/place/J5HV+MJ+San+Giovanni+in+Persiceto,+Bologna,+Italia"
+      ]
     }
   }
 ]

@@ -52,14 +52,26 @@ const eventi = [
         <div class="max-w-6xl mx-auto px-6 text-center">
         
                 {/* Titolo */}
-                <h2 class="text-3xl sm:text-4xl font-bold text-burdeaux mb-2">
+                <h2 class="text-3xl sm:text-4xl font-bold text-burdeaux mb-8">
                 Eventi che Abbiamo Creato
                 </h2>
         
-                {/* Sottotitolo */}
+                {/* Sottotitolo 
                 <p class=" mb-12">
                 Scopri alcuni degli eventi più memorabili che abbiamo avuto l’onore di organizzare.
-                </p>
+                </p>*/}
+                {/* Sottotitolo / Texto Introductorio */}
+                <div class="max-w-3xl mx-auto mb-12">
+                    <p class=" ">
+                    Ogni evento è una storia a sé, raccontata attraverso la nostra <strong>professionalità</strong> e una <strong>passione</strong> che dura da anni. 
+                    In questa galleria, vi mostriamo come trasformiamo i sogni in realtà, guidandovi passo dopo passo verso un risultato di successo.
+                    </p>
+                    <p class="mt-4 ">
+                    Dalla cura della <strong>mise en place</strong> nel nostro showroom fino agli spettacolari <strong>show cooking</strong> dei nostri chef, 
+                    ogni dettaglio è pensato per deliziare i vostri ospiti con i sapori autentici della tradizione emiliana e la raffinatezza dei nostri menù personalizzati. 
+                    Esplorate le nostre realizzazioni e lasciatevi ispirare.
+                    </p>
+                </div>
         
                 {/* Griglia degli eventi */}
                 <div class="flex flex-col lg:grid lg:grid-cols-3 gap-8">
@@ -75,7 +87,8 @@ const eventi = [
                     <div class="absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-transparent"></div>
 
                     <div class="absolute bottom-4 left-0 right-0 flex flex-col items-center justify-center">
-                        <h3 class="mx-1 text-burdeaux text-xl lg:text-lg font-black drop-shadow-lg text-center">
+                        <h3 class="mx-1 text-burdeaux text-xl lg:text-lg font-black drop-shadow-lg text-center
+                        ">
                         {evento.titolo}
                         </h3>
                         <p class="text-green-900 text-sm font-medium">Evento</p>

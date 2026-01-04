@@ -1,0 +1,79 @@
+---
+import BaseLayout from "@/components/layouts/BaseLayout.astro";
+import ReturnLayout from "@/components/layouts/ReturnLayout.astro";
+
+const title = "Mappa del sito | La Casona Group";
+const description =
+  "Mappa del sito La Casona Group: scopri tutte le sezioni dedicate a eventi, catering, ristorante e informazioni utili.";
+const canonical = "https://lacasonagroup.it/mappa-sito/";
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <ReturnLayout>
+    <section class="max-w-4xl mx-auto px-6 py-16 text-left">
+
+      <h1 class="text-4xl font-bold text-burdeaux mb-10">
+        Mappa del sito
+      </h1>
+
+      {/* === La Casona Group === */}
+      <div class="mb-10">
+        <h2 class="text-2xl font-semibold text-burdeaux mb-3">
+          La Casona Group
+        </h2>
+        <ul class="list-disc pl-6 space-y-1">
+          <li><a href="/" class="hover:underline">Home</a></li>
+        </ul>
+      </div>
+
+      {/* === Eventi === */}
+      <div class="mb-10">
+        <h2 class="text-2xl font-semibold text-burdeaux mb-3">
+          Eventi
+        </h2>
+        <ul class="list-disc pl-6 space-y-1">
+          <li><a href="/eventi/" class="hover:underline">Eventi</a></li>
+          <li><a href="/eventi/servizi/" class="hover:underline">Servizi</a></li>
+          <li><a href="/eventi/partners/" class="hover:underline">Partners</a></li>
+          <li><a href="/eventi/portfolio/" class="hover:underline">Portfolio</a></li>
+        </ul>
+      </div>
+
+      {/* === Ristorante === */}
+      <div class="mb-10">
+        <h2 class="text-2xl font-semibold text-burdeaux mb-3">
+          Ristorante
+        </h2>
+        <ul class="list-disc pl-6 space-y-1">
+          <li><a href="/ristorante/" class="hover:underline">Ristorante</a></li>
+          <li><a href="/ristorante/menu/" class="hover:underline">Menu</a></li>
+        </ul>
+      </div>
+
+      {/* === Informazioni === */}
+      <div class="mb-10">
+        <h2 class="text-2xl font-semibold text-burdeaux mb-3">
+          Informazioni
+        </h2>
+        <ul class="list-disc pl-6 space-y-1">
+          <li>
+            <a href="/preparazioni-e-allergeni/" class="hover:underline">
+              Preparazioni e allergeni
+            </a>
+          </li>
+          <li>
+            <a href="/privacy-policy/" class="hover:underline">
+              Privacy policy
+            </a>
+          </li>
+          <li>
+            <a href="/cookie-policy/" class="hover:underline">
+              Cookie policy
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </section>
+  </ReturnLayout>
+</BaseLayout>
