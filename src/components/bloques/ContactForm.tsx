@@ -4,7 +4,7 @@ import { X } from "lucide-react";
 
 export default function ContactForm({ onClose }) {
   const [step, setStep] = useState(0);
-  const totalSteps = 7; // 6 pasos + final
+  const totalSteps = 8; // 6 pasos + final
   const [errors, setErrors] = useState({});
   
 
@@ -13,6 +13,7 @@ export default function ContactForm({ onClose }) {
     name: "",
     eventType: "",
     guests: "",
+    eventDate: "",
     services: [],
     message: "",
     email: "",
@@ -53,7 +54,7 @@ export default function ContactForm({ onClose }) {
         }
         break;
 
-      case 6:
+      case 7:
         if (
           formData.email.trim() === "" &&
           formData.phone.trim() === ""
@@ -73,7 +74,7 @@ export default function ContactForm({ onClose }) {
 
   // Enviar los datos al backend
   const sendForm = async () => {
-    if (!validateStep(6)) return;
+    if (!validateStep(7)) return;
 
     try {
       await fetch("https://api.lacasonagroup.it/form", {
@@ -82,7 +83,7 @@ export default function ContactForm({ onClose }) {
         body: JSON.stringify(formData),
       });
 
-      setStep(6);
+      setStep(7);
     } catch (err) {
       console.error("Error enviando formulario:", err);
       alert("Errore durante l’invio. Riprova più tardi.");
@@ -123,20 +124,28 @@ export default function ContactForm({ onClose }) {
               <Step3 formData={formData} setFormData={setFormData} onNext={next} onBack={() => setStep(1)} errors={errors}/>
             )}
             {step === 3 && (
-              <Step4 formData={formData} setFormData={setFormData} onNext={next} onBack={() => setStep(2)} />
+              <StepEventDate
+                formData={formData}
+                setFormData={setFormData}
+                onNext={next}
+                onBack={() => setStep(2)}
+              />
             )}
             {step === 4 && (
-              <Step5 formData={formData} setFormData={setFormData} onNext={next} onBack={() => setStep(3)} />
+              <Step4 formData={formData} setFormData={setFormData} onNext={next} onBack={() => setStep(3)} />
             )}
             {step === 5 && (
-              <Step6 formData={formData} setFormData={setFormData} onSend={sendForm} onBack={() => setStep(4)} errors={errors}/>
+              <Step5 formData={formData} setFormData={setFormData} onNext={next} onBack={() => setStep(4)} />
             )}
-            {step === 6 && <StepFinal onClose={onClose} />}
+            {step === 6 && (
+              <Step6 formData={formData} setFormData={setFormData} onSend={sendForm} onBack={() => setStep(5)} errors={errors}/>
+            )}
+            {step === 7 && <StepFinal onClose={onClose} />}
           </motion.div>
         </AnimatePresence>
 
         {/* Indicador de progreso */}
-        {step!=6 && <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2">
+        {step!=7 && <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2">
           {[...Array(totalSteps - 1)].map((_, i) => (
             <div
               key={i}
@@ -233,6 +242,76 @@ function Step3({ formData, setFormData, onNext, onBack, errors } ) {
       {errors.guests && (
         <p className="text-red-600 text-sm mb-4">{errors.guests}</p>
       )}
+      <div className="flex justify-between px-2">
+        <button onClick={onBack} className="text-burdeaux font-normal" aria-label="Indietro">
+          Indietro
+        </button>
+        <button
+          onClick={onNext}
+          className="inline-block bg-amarilloPastel text-burdeaux text-xl font-semibold px-4 py-2 my-2 rounded-sm
+          hover:scale-105 transition-all duration-300"
+          aria-label="Avanti"
+        >
+          Avanti
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function StepEventDate({ formData, setFormData, onNext, onBack }) {
+  const today = new Date().toISOString().split("T")[0];
+
+  const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
+
+  const updateDate = (s, e) => {
+    if (!s && !e) {
+      setFormData({ ...formData, eventDate: "" });
+    } else {
+      setFormData({
+        ...formData,
+        eventDate: `${s} - ${e || "Da definire"}`,
+      });
+    }
+  };
+
+  return (
+    <div className="max-w-md w-full">
+      <h2 className="text-2xl font-bold text-burdeaux mb-4">
+        Quando si terrà l’evento?
+      </h2>
+
+      <p className="text-sm text-gray-500 mb-6">
+        Puoi indicare un giorno preciso o un intervallo.  
+        Se non lo sai ancora, puoi lasciare vuoto.
+      </p>
+
+      <div className="flex flex-col gap-4 mb-6">
+        <input
+          type="date"
+          min={today}
+          className="w-full border border-gray-300 rounded-lg p-3"
+          placeholder="Data inizio"
+          value={start}
+          onChange={(e) => {
+            setStart(e.target.value);
+            updateDate(e.target.value, end);
+          }}
+        />
+
+        <input
+          type="date"
+          min={start || today}
+          className="w-full border border-gray-300 rounded-lg p-3"
+          placeholder="Data fine (opzionale)"
+          value={end}
+          onChange={(e) => {
+            setEnd(e.target.value);
+            updateDate(start, e.target.value);
+          }}
+        />
+      </div>
       <div className="flex justify-between px-2">
         <button onClick={onBack} className="text-burdeaux font-normal" aria-label="Indietro">
           Indietro

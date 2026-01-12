@@ -203,8 +203,8 @@ export default function PartnersIsland() {
                   {/* Overlay blanco + icono */}
                   <div className="
                     absolute inset-0 flex items-center justify-center
-                    bg-gradient-to-t from-white/70 to-white/5
-                    sm:group-hover:bg-white/70
+                    bg-gradient-to-t from-white/60 to-white/5
+                    sm:group-hover:bg-white/60
                     transition-colors duration-500
                   ">
                     <HiLink
@@ -217,7 +217,7 @@ export default function PartnersIsland() {
                   </div>
       
                   {/* Gradiente inferior + texto */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-transparent pointer-events-none"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-transparent pointer-events-none"></div>
                   <div className="absolute bottom-4 left-0 right-0 flex flex-col items-center justify-center pointer-events-none">
                     <h2 className="text-burdeaux text-2xl lg:text-lg font-normal drop-shadow-lg text-center">
                       {p.titolo}
